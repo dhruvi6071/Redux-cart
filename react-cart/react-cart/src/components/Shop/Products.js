@@ -1,5 +1,5 @@
-import ProductItem from './ProductItem';
-import classes from './Products.module.css';
+import ProductItem from "./ProductItem";
+import classes from "./Products.module.css";
 
 const DUMMY_PRODUCTS = [
   {
@@ -32,7 +32,6 @@ const DUMMY_PRODUCTS = [
     title: "My fifth Item",
     description: "This is my fifth Item.",
   },
- 
 ];
 const Products = (props) => {
   return (
@@ -41,14 +40,13 @@ const Products = (props) => {
       <ul>
         {DUMMY_PRODUCTS.map((product) => (
           <ProductItem
-          key = {product.id}
-          id = {product.id}
-          title={product.title}
-          price={product.price}
-          description={product.description}
-        />
-       ))}
-        
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            price={product.price}
+            description={product.description}
+          />
+        ))}
       </ul>
     </section>
   );
