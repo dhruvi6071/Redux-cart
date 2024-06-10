@@ -6,11 +6,21 @@ import { useEffect } from "react";
 
 function App() {
   const showCart = useSelector((state) => state.ui.cartIsVisible);
-  const cart = useSelector(state => state.cart);
+  //Because of this useSelector our function will always set new data.
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    fetch();
-  }, []);
+    const sendCartData = async () => {
+      //By this put method we can set the new incoming data.
+      const response = await fetch(
+        "https://cart-457ba-default-rtdb.asia-southeast1.firebasedatabase.app/",
+        { method: "PUT", body: JSON.stringify(cart) }
+      );
+      const responseData = await response.json();
+    };
+
+    
+  }, [cart]);
 
   return (
     <Layout>
