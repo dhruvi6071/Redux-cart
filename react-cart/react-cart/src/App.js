@@ -16,6 +16,12 @@ function App() {
         "https://cart-457ba-default-rtdb.asia-southeast1.firebasedatabase.app/",
         { method: "PUT", body: JSON.stringify(cart) }
       );
+
+      if(!response.ok) {
+        throw new Error('sending cart data failed');
+      }
+
+
       const responseData = await response.json();
     };
 
