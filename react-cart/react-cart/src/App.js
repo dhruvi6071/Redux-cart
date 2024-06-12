@@ -10,22 +10,13 @@ function App() {
   const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    const sendCartData = async () => {
-      //By this put method we can set the new incoming data.
-      const response = await fetch(
-        "https://cart-457ba-default-rtdb.asia-southeast1.firebasedatabase.app/",
-        { method: "PUT", body: JSON.stringify(cart) }
-      );
-
-      if(!response.ok) {
-        throw new Error('sending cart data failed');
-      }
-
-
-      const responseData = await response.json();
-    };
-
     
+      //By this put method we can set the new incoming data.
+      fetch(
+        'https://cart-457ba-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json',
+        //Here put method override the existing data.
+        { method: 'PUT', body: JSON.stringify(cart) }
+      );
   }, [cart]);
 
   return (
