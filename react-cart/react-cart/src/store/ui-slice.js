@@ -9,8 +9,12 @@ const uiSlice = createSlice({
       state.cartIsVisible = !state.cartIsVisible;
     },
     showNotification(state, actions) {
-       state.notification = {status: actions.payload.status, title: actions.payload.title, message: actions.payload.message}; 
-    }
+      state.notification = {
+        status: actions.payload.status,
+        title: actions.payload.title,
+        message: actions.payload.message,
+      };
+    },
   },
 });
 
