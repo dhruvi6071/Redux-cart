@@ -1,4 +1,4 @@
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect } from "react";
 
 import Cart from "./components/Cart/Cart";
@@ -19,24 +19,33 @@ function App() {
   useEffect(() => {
     dispatch(fetchCartData());
   }, [dispatch]);
+
   useEffect(() => {
     if (isInitial) {
       isInitial = false;
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if(cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
 
   return (
     <Fragment>
-      {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       <Layout>
         {showCart && <Cart />}
         <Products />
       </Layout>
       {showCart && <Cart />}
-      <Products />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      <Products />
     </Fragment>
   );
 }
